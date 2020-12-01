@@ -1,4 +1,3 @@
-from flask import Flask
 import requests
 from bs4 import BeautifulSoup
 import pprint
@@ -34,15 +33,5 @@ def create_custom_hn(links, subtext):
     return sort_stories_by_votes(hn)
 
 
-app = Flask(__name__)
+pprint.pprint(create_custom_hn(mega_links, mega_subtext))
 
-hacker_news = create_custom_hn(mega_links, mega_subtext)
-
-
-@app.route('/')
-def get_news():
-    return {'news': hacker_news}
-
-
-if __name__ == '__main__':
-    app.run(port=5000)
