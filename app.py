@@ -1,7 +1,9 @@
-from flask import Flask
 import requests
+from flask import Flask
 from bs4 import BeautifulSoup
-import pprint
+import os
+
+
 
 res = requests.get('https://news.ycombinator.com/news')
 res2 = requests.get('https://news.ycombinator.com/news?p=2')
@@ -40,9 +42,12 @@ hacker_news = create_custom_hn(mega_links, mega_subtext)
 
 
 @app.route('/')
-def get_news():
+def news():
     return {'news': hacker_news}
 
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    # app.run(debug=True, use_reloader=True)
+    port = int(os.environ.get('PORT', 33507))
+    waitress.serve(app, port=port)
+

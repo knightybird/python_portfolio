@@ -1,0 +1,7 @@
+Flask~=1.1.2
+waitress
+gunicorn
+
+
+requests~=2.24.0
+beautifulsoup4~=4.9.3
