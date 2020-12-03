@@ -47,7 +47,7 @@ def news():
 
 
 if __name__ == '__main__':
-    # app.run(debug=True, use_reloader=True)
-    port = int(os.environ.get('PORT', 33507))
-    waitress.serve(app, port=port)
+    news.run(debug=True, use_reloader=True)
+    # port = int(os.environ.get('PORT', 33507))
+    # waitress.serve(app, port=port)
 
