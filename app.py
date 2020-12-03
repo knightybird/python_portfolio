@@ -1,5 +1,5 @@
 import requests
-from flask import Flask
+from flask import Flask, logging
 from bs4 import BeautifulSoup
 import os
 
@@ -50,4 +50,5 @@ if __name__ == '__main__':
     news.run(debug=True, use_reloader=True)
     # port = int(os.environ.get('PORT', 33507))
     # waitress.serve(app, port=port)
-
+    app.logger.addHandler(logging.StreamHandler(sys.stdout))
+    app.logger.setLevel(logging.ERROR)
