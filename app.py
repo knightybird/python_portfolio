@@ -1,3 +1,5 @@
+from builtins import enumerate, sorted, len, int
+
 import requests
 from flask import Flask, logging
 from bs4 import BeautifulSoup
@@ -42,11 +44,10 @@ hacker_news = create_custom_hn(mega_links, mega_subtext)
 @app.route('/')
 def news():
     return {'news': hacker_news}
+    # return {'test': 'testval'}
 
 
 if __name__ == '__main__':
-    news.run(debug=True, use_reloader=True)
+    app.run()
     # port = int(os.environ.get('PORT', 33507))
     # waitress.serve(app, port=port)
-    app.logger.addHandler(logging.StreamHandler(sys.stdout))
-    app.logger.setLevel(logging.ERROR)
