@@ -3,7 +3,7 @@ from flask import Flask, logging
 from bs4 import BeautifulSoup
 import os
 
-
+app = Flask(__name__)
 
 res = requests.get('https://news.ycombinator.com/news')
 res2 = requests.get('https://news.ycombinator.com/news?p=2')
@@ -35,8 +35,6 @@ def create_custom_hn(links, subtext):
                 hn.append({'title': title, 'link': href, 'votes': points})
     return sort_stories_by_votes(hn)
 
-
-app = Flask(__name__)
 
 hacker_news = create_custom_hn(mega_links, mega_subtext)
 
